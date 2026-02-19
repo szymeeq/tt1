@@ -1,0 +1,256 @@
+/* 1. USTAWIENIA BAZOWE */
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    overflow: hidden; /* Na desktopie blokujemy główny scroll */
+}
+
+img{
+    max-width: 100%;
+}
+
+#container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 2. PANEL BOCZNY (SIDEBAR) */
+#sidebar {
+    width: 350px;
+    min-width: 350px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.7);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Przewijanie tylko wewnątrz sidebaru */
+}
+
+#sidebar h2 {
+    color: #e67e22;
+    margin-top: 0;
+    font-size: 24px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Wyszukiwarka */
+.search-box {
+    margin-bottom: 15px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 12px;
+    background: #252525;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: #e67e22;
+}
+
+/* Przycisk Pokaż Wszystko */
+#btn-all {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background: #e67e22;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.1s, background 0.2s;
+}
+
+#btn-all:active {
+    transform: scale(0.98);
+}
+
+#btn-all:hover {
+    background: #d35400;
+}
+
+/* Grupa filtrów (Tagi) */
+.filter-group {
+    margin-bottom: 25px;
+}
+
+.filter-group h3 {
+    font-size: 14px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+#category-tags, #album-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-filter {
+    background: #2a2a2a;
+    color: #bbb;
+    border: 1px solid #444;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tag-filter:hover {
+    border-color: #e67e22;
+    background: #333;
+    color: white;
+}
+
+.tag-filter.active {
+    background: #e67e22;
+    color: white;
+    border-color: #e67e22;
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+/* Licznik miejsc na dole */
+#results-count {
+    margin-top: auto; /* Pcha licznik na sam dół sidebaru */
+    padding: 15px;
+    background: #111;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+/* 3. MAPA */
+#map {
+    flex-grow: 1;
+    height: 100%;
+    z-index: 1;
+}
+
+/* 4. RESPONSYWNOŚĆ (MOBILE) */
+/* Przycisk mobilny - domyślnie ukryty */
+#mobile-filter-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #mobile-filter-btn {
+        display: block;
+        position: fixed;
+        bottom: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2000;
+        background: #e67e22;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        white-space: nowrap; /* Zapobiega rozbijaniu tekstu na dwie linie */
+    }
+    
+    /* Ukrywamy ten standardowy licznik z sidebaru na mobile, żeby nie śmiecił */
+    #sidebar #results-count {
+        display: none;
+    }
+
+
+    #sidebar {
+        position: fixed;
+        left: 0;
+        bottom: -100%; /* Schowaj sidebar pod ekranem */
+        width: 100%;
+        height: 80vh; /* Zajmij 80% ekranu po otwarciu */
+        z-index: 1500;
+        transition: bottom 0.3s ease-in-out;
+        border-radius: 20px 20px 0 0;
+        border-right: none;
+        border-top: 3px solid #e67e22;
+    }
+
+    /* Klasa, którą dodamy przez JS, żeby wysunąć menu */
+    #sidebar.active {
+        bottom: 0;
+    }
+
+    #map {
+        width: 100%;
+        height: 100vh; /* Mapa na cały ekran */
+    }
+}
+
+/* 5. LEAFLET CUSTOM STYLES */
+.leaflet-popup-content-wrapper {
+    background: #1a1a1a !important;
+    color: white !important;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.leaflet-popup-tip {
+    background: #1a1a1a !important;
+}
+
+.custom-popup .leaflet-popup-content {
+    margin: 10px;
+    line-height: 1.4;
+}
+
+/* 6. CUSTOM SCROLLBAR */
+#sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+#sidebar::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+#sidebar::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+#sidebar::-webkit-scrollbar-thumb:hover {
+    background: #e67e22;
+}
