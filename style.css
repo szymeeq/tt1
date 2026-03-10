@@ -36,7 +36,7 @@ img{
     overflow-y: auto; /* Przewijanie tylko wewnątrz sidebaru */
 }
 
-#sidebar h2 {
+#sidebar h1 {
     color: #e67e22;
     margin-top: 0;
     font-size: 24px;
