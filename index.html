@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image" href="ikony/logo.png"> 
+    <meta name="description" content="Interaktywna mapa miejsc z utworów Taco Hemingwaya. Znajdź lokalizacje z albumów Marmur, Pocztówka z WWA i innych. Sprawdź cytaty i klipy!">
+    <meta name="keywords" content="Taco Hemingway, mapa, Warszawa, miejsca z piosenek, 1-800-Oświecenie, rap mapa, Trójkąt Warszawski, Umowa o dzieło, Wosk, Marmur, Szprycer, Soma 0,5 mg, Flagey, Café Belga, Jarmark, Europa, LATARNIE WSZĘDZIE DAWNO ZGASŁY, taco">
+    <meta name="author" content="szymeeq">
+    <meta property="og:title" content="Mapa Taco Hemingwaya">
+    <meta property="og:description" content="Odkryj Warszawę śladami tekstów Taco Hemingwaya.">
+    <meta property="og:image" content="ikony/logo.png">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mapa Taco Hemingwaya",
+    "description": "Interaktywna mapa miejsc z utworów Taco Hemingwaya w Warszawie i nie tylko.",
+    "genre": "Entertainment",
+    "browserRequirements": "Requires JavaScript and HTML5 support",
+    "applicationCategory": "MapApplication",
+    "author": {
+        "@type": "Person",
+        "name": "szymeeq"
+    }
+    }
+</script>
 </head>
 <body>
 <button id="mobile-filter-btn">
@@ -14,7 +35,7 @@
 </button>
     <div id="container">
 <div id="sidebar">
-    <h2>Mapa Taco Hemingwaya<img src="wwa1.png" alt="mapa taco hemingway"></h2>
+    <h1>Mapa Taco Hemingwaya <img src="wwa1.png" alt="Panorama Warszawy Taco Hemingway"></h1>
     
     <div class="search-box">
         <input type="text" id="search-input" placeholder="Szukaj miejsca lub cytatu...">
@@ -44,5 +65,18 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
+    <section style="display:none;">
+  <h2>Lokalizacje z utworów Taco Hemingwaya</h2>
+  <p>Mapa zawiera miejsca z albumów: 
+    Young Hems, Trójkąt Warszawski, Umowa o dzieło, Wosk, Marmur, Szprycer, 
+    Soma 0,5 mg, Flagey, Café Belga, Pocztówka z WWA, Jarmark, Europa, 
+    1-800-OŚWIECENIE, LATARNIE WSZĘDZIE DAWNO ZGASŁY.
+  </p>
+  <ul>
+    <li>Warszawa: Plac Trzech Krzyży, Nowy Świat, Chmielna, Bulwary Wiślane, Metro Politechnika.</li>
+    <li>Kluby i restauracje: Plan B, Syreni Śpiew, Hotel Warszawa.</li>
+    <li>Inne lokalizacje: Trasa Łazienkowska, Most Poniatowskiego, Dworzec Centralny.</li>
+  </ul>
+</section>
 </body>
 </html>
