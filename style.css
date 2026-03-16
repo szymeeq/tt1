@@ -46,6 +46,36 @@ img{
     margin-bottom: 20px;
 }
 
+/* Nagłówek sidebaru z ikonami */
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-header h2 {
+    border-bottom: none; /* Usuwamy dolną kreskę z h2, bo damy ją niżej */
+    margin-bottom: 5px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 22px;
+    padding-bottom: 15px;
+
+}
+
+.social-icons a {
+    color: #888;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.social-icons a:hover {
+    color: #e67e22;
+    transform: scale(1.1);
+}
+
 /* Wyszukiwarka */
 .search-box {
     margin-bottom: 15px;
@@ -253,4 +283,43 @@ img{
 }
 #sidebar::-webkit-scrollbar-thumb:hover {
     background: #e67e22;
+}
+
+.suppi-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #e67e22; /* Kolor pasujący do Twoich przycisków */
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000; /* Musi być nad mapą */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.suppi-button:hover {
+    background-color: #d35400;
+    transform: scale(1.05);
+    color: white;
+}
+
+.suppi-button i {
+    font-size: 1.2rem;
+}
+
+/* Na małych ekranach chowamy tekst, zostawiamy samą ikonę kawy, żeby nie zasłaniać mapy */
+@media (max-width: 600px) {
+    .suppi-button span {
+        display: none;
+    }
+    .suppi-button {
+        padding: 15px;
+        bottom: 60px; /* Wyżej, żeby nie nachodził na przycisk filtrów mobilnych */
+    }
 }
