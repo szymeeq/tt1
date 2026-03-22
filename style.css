@@ -10,7 +10,7 @@ body, html {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #121212;
     color: white;
-    overflow: hidden; /* Na desktopie blokujemy główny scroll */
+    overflow: hidden; 
 }
 
 img{
@@ -33,7 +33,7 @@ img{
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* Przewijanie tylko wewnątrz sidebaru */
+    overflow-y: auto; 
 }
 
 #sidebar h1 {
@@ -46,14 +46,14 @@ img{
     margin-bottom: 20px;
 }
 
-/* Nagłówek sidebaru z ikonami */
+
 .sidebar-header {
     text-align: center;
     margin-bottom: 20px;
 }
 
 .sidebar-header h2 {
-    border-bottom: none; /* Usuwamy dolną kreskę z h2, bo damy ją niżej */
+    border-bottom: none; 
     margin-bottom: 5px;
 }
 
@@ -119,7 +119,7 @@ img{
     background: #d35400;
 }
 
-/* Grupa filtrów (Tagi) */
+/* Grupa filtrów */
 .filter-group {
     margin-bottom: 25px;
 }
@@ -185,8 +185,7 @@ img{
     z-index: 1;
 }
 
-/* 4. RESPONSYWNOŚĆ (MOBILE) */
-/* Przycisk mobilny - domyślnie ukryty */
+/* 4. RESPONSYWNOŚĆ */
 #mobile-filter-btn {
     display: none;
     position: fixed;
@@ -219,10 +218,10 @@ img{
         border-radius: 30px;
         font-weight: bold;
         box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        white-space: nowrap; /* Zapobiega rozbijaniu tekstu na dwie linie */
+        white-space: nowrap; 
     }
     
-    /* Ukrywamy ten standardowy licznik z sidebaru na mobile, żeby nie śmiecił */
+    
     #sidebar #results-count {
         display: none;
     }
@@ -231,9 +230,9 @@ img{
     #sidebar {
         position: fixed;
         left: 0;
-        bottom: -100%; /* Schowaj sidebar pod ekranem */
+        bottom: -100%;
         width: 100%;
-        height: 80vh; /* Zajmij 80% ekranu po otwarciu */
+        height: 80vh; 
         z-index: 1500;
         transition: bottom 0.3s ease-in-out;
         border-radius: 20px 20px 0 0;
@@ -241,7 +240,7 @@ img{
         border-top: 3px solid #e67e22;
     }
 
-    /* Klasa, którą dodamy przez JS, żeby wysunąć menu */
+   
     #sidebar.active {
         bottom: 0;
     }
@@ -252,7 +251,7 @@ img{
     }
 }
 
-/* 5. LEAFLET CUSTOM STYLES */
+/* 5. LEAFLET*/
 .leaflet-popup-content-wrapper {
     background: #1a1a1a !important;
     color: white !important;
@@ -285,12 +284,17 @@ img{
     background: #e67e22;
 }
 
-.suppi-button {
+.action-buttons {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #e67e22; /* Kolor pasujący do Twoich przycisków */
-    color: white;
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    z-index: 1000;
+}
+
+.floating-btn {
     text-decoration: none;
     padding: 12px 20px;
     border-radius: 50px;
@@ -298,28 +302,42 @@ img{
     align-items: center;
     gap: 10px;
     font-weight: bold;
+    color: white;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 1000; /* Musi być nad mapą */
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.suppi-button:hover {
-    background-color: #d35400;
-    transform: scale(1.05);
-    color: white;
-}
+/* Kolory dla poszczególnych przycisków */
+.suppi-btn { background-color: #e67e22; }
+.suppi-btn:hover { background-color: #d35400; transform: scale(1.05); color: white; }
 
-.suppi-button i {
-    font-size: 1.2rem;
-}
+.contact-btn { background-color: #e67e22; }
+.contact-btn:hover { background-color: #d35400; transform: scale(1.05); color: white; }
 
-/* Na małych ekranach chowamy tekst, zostawiamy samą ikonę kawy, żeby nie zasłaniać mapy */
+/* Responsywność */
+
 @media (max-width: 600px) {
-    .suppi-button span {
-        display: none;
+    .action-buttons {
+        bottom: 80px; 
+        right: 15px;
+        gap: 12px;
     }
-    .suppi-button {
-        padding: 15px;
-        bottom: 60px; /* Wyżej, żeby nie nachodził na przycisk filtrów mobilnych */
+
+    .floating-btn span {
+        display: none; 
+    }
+
+    .floating-btn {
+        width: 50px;      
+        height: 50px;      
+        padding: 0;        
+        border-radius: 50%;
+        justify-content: center; 
+        align-items: center;     
+    }
+
+    .floating-btn i {
+        font-size: 1.4rem; 
+        margin: 0;        
     }
 }
